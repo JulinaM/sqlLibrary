@@ -10,10 +10,18 @@ import java.sql.SQLException;
 /**
  * Created by Dipak Malla
  * Date: 6/30/14
+ * @author Dipak Malla
  */
 public class MySql implements Sql {
     private java.sql.Connection sqlConnection;
     private Connection connection;
+
+    /**
+     * Init the connection
+     * @return Sql Connection
+     * @throws RmodelException.CommonException
+     * @throws RmodelException.SqlException
+     */
     @Override
     public java.sql.Connection InitConnection() throws RmodelException.CommonException,
             RmodelException.SqlException {
@@ -50,6 +58,10 @@ public class MySql implements Sql {
             }
     }
 
+    /**
+     * Return sql connection
+     * @return Sql Connection
+     */
     @Override
     public java.sql.Connection getSqlConnection() {
         return this.sqlConnection;

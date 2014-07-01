@@ -3,6 +3,8 @@ package com.tektak.iloop.rmodel.connection;
 /**
  * Created by Dipak Malla
  * Date: 6/30/14
+ * Getter and setter methods.
+ * @author Dipak Malla
  */
 public class MySqlConnection implements Connection {
     private String url;

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 /**
  * Created by Dipak Malla
  * Date: 7/1/14
+ * @author Dipak Malla
  */
 public class MySqlQuery implements Query {
     private PreparedStatement preparedStatement;
@@ -29,6 +30,11 @@ public class MySqlQuery implements Query {
         }
     }
 
+    /**
+     * Initilizes prepared statement
+     * @throws RmodelException.SqlException
+     * @throws RmodelException.CommonException
+     */
     @Override
     public void InitPreparedStatement() throws RmodelException.SqlException,
             RmodelException.CommonException {
@@ -53,6 +59,11 @@ public class MySqlQuery implements Query {
         this.preparedStatement = preparedStatement;
     }
 
+    /**
+     * Run DML Query
+     * @return Rows Affected
+     * @throws RmodelException.SqlException
+     */
     @Override
     public int Dml() throws RmodelException.SqlException {
         try {
@@ -62,6 +73,11 @@ public class MySqlQuery implements Query {
         }
     }
 
+    /**
+     * Runs DRL Query
+     * @return Result Set
+     * @throws RmodelException.SqlException
+     */
     @Override
     public ResultSet Drl() throws RmodelException.SqlException {
         try {
@@ -76,6 +92,10 @@ public class MySqlQuery implements Query {
         this.sql = (MySql)sql;
     }
 
+    /**
+     * Closes database connections
+     * @throws RmodelException.SqlException
+     */
     @Override
     public void Close() throws RmodelException.SqlException {
         this.sql.CloseConnection();
