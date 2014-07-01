@@ -23,6 +23,7 @@ public class MySql implements Sql {
             Class.forName(connection.getDriver()).newInstance();
             this.sqlConnection = DriverManager.getConnection(connection.getUrl()+connection.getDatabaseName(),
                     connection.getUsername(),connection.getPassword());
+            return this.sqlConnection;
         } catch (InstantiationException e) {
             throw  new RmodelException.CommonException(e.getMessage(), e);
         } catch (IllegalAccessException e) {
@@ -32,7 +33,7 @@ public class MySql implements Sql {
         } catch (SQLException e) {
            throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }
-        return this.sqlConnection;
+
     }
     @Override
     public void setConnection(Connection connection) {
