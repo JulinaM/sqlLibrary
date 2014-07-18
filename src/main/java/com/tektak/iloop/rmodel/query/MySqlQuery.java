@@ -81,11 +81,7 @@ public class MySqlQuery implements Query {
     @Override
     public ResultSet Drl() throws RmodelException.SqlException {
         try {
-            ResultSet resultSet = this.preparedStatement.executeQuery();
-            if(resultSet.last())
-                return resultSet;
-            else
-                throw new RmodelException.SqlException(RmodelException.RESULT_SET_EMPTY);
+            return this.preparedStatement.executeQuery();
         } catch (SQLException e) {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }
