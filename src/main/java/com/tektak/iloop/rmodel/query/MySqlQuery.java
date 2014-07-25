@@ -20,6 +20,13 @@ public class MySqlQuery implements Query {
 
     public MySqlQuery()
     {}
+
+    /**
+     * Constructor with parameter.
+     * @param sql Sql
+     * @param query String
+     * @throws RmodelException.SqlException
+     */
     public MySqlQuery(Sql sql, String query) throws RmodelException.SqlException {
         this.sql = (MySql)sql;
         this.query = query;

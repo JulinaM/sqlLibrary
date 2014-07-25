@@ -5,16 +5,13 @@ import com.tektak.iloop.rmodel.connection.MySqlConnection;
 import org.junit.Assert;
 import org.junit.Test;
 
-
-
-
 /**
  * Created by Dipak Malla
  * Date: 7/1/14
  */
-public class MySqlTest{
+public class MySqlTest {
     @Test
-    public void TestConnection(){
+    public void TestConnection() {
         MySqlConnection mySqlConnection = new MySqlConnection();
         mySqlConnection.setDatabaseName("ram");
         mySqlConnection.setUsername("root");
