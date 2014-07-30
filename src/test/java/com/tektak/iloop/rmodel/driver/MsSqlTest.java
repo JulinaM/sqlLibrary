@@ -7,18 +7,18 @@ import org.junit.Test;
 
 /**
  * Created by Dipak Malla
- * Date: 7/1/14
+ * Date: 7/30/14
  */
-public class MySqlTest {
+public class MsSqlTest {
     @Test
     public void TestConnection() {
         MySqlConnection mySqlConnection = new MySqlConnection();
-        mySqlConnection.setDatabaseName("ram");
-        mySqlConnection.setUsername("root");
-        mySqlConnection.setPassword("cdanged");
-        mySqlConnection.setUrl("jdbc:mysql://localhost:3306/");
-        mySqlConnection.setDriver("com.mysql.jdbc.Driver");
-        MySql mySql = new MySql();
+        mySqlConnection.setDatabaseName("iLoopV1_0");
+        mySqlConnection.setUsername("sa");
+        mySqlConnection.setPassword("sandman");
+        mySqlConnection.setUrl("jdbc:sqlserver://10.0.0.6:1433");
+        mySqlConnection.setDriver("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        MsSql mySql = new MsSql();
         mySql.setConnection(mySqlConnection);
         try {
             mySql.InitConnection();
@@ -29,5 +29,4 @@ public class MySqlTest {
         }
         Assert.assertNotNull(mySql.getSqlConnection());
     }
-
 }

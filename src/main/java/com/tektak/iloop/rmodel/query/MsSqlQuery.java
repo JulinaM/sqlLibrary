@@ -10,25 +10,15 @@ import java.sql.SQLException;
 
 /**
  * Created by Dipak Malla
- * Date: 7/1/14
- * @author Dipak Malla
+ * Date: 7/30/14
  */
-public class MySqlQuery implements Query {
+public class MsSqlQuery implements Query {
     private PreparedStatement preparedStatement;
-    private MySql sql;
+    private Sql sql;
     private String query;
-
-    public MySqlQuery()
-    {}
-
-    /**
-     * Constructor with parameter.
-     * @param sql Sql
-     * @param query String
-     * @throws RmodelException.SqlException
-     */
-    public MySqlQuery(Sql sql, String query) throws RmodelException.SqlException {
-        this.sql = (MySql)sql;
+    public MsSqlQuery(){}
+    public MsSqlQuery(Sql sql, String query) throws RmodelException.SqlException {
+        this.sql = sql;
         this.query = query;
         try {
             this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query);
@@ -36,7 +26,6 @@ public class MySqlQuery implements Query {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }
     }
-
     /**
      * Initilizes prepared statement
      * @throws RmodelException.SqlException
@@ -48,7 +37,7 @@ public class MySqlQuery implements Query {
         if(this.query == null || this.query.isEmpty())
             throw  new RmodelException.CommonException(RmodelException.QUERY_INVALID);
         if(this.sql == null)
-            throw new RmodelException.CommonException(String.format(RmodelException.FORMATED_NULL_ERROR,"MySql Object"));
+            throw new RmodelException.CommonException(String.format(RmodelException.FORMATED_NULL_ERROR,"MSSql Object"));
         try {
             this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query);
         } catch (SQLException e) {
