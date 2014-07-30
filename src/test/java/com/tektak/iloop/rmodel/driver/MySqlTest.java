@@ -16,9 +16,9 @@ public class MySqlTest{
     @Test
     public void TestConnection(){
         MySqlConnection mySqlConnection = new MySqlConnection();
-        mySqlConnection.setDatabaseName("test");
+        mySqlConnection.setDatabaseName("ram");
         mySqlConnection.setUsername("root");
-        mySqlConnection.setPassword("julina1");
+        mySqlConnection.setPassword("cdanged");
         mySqlConnection.setUrl("jdbc:mysql://localhost:3306/");
         mySqlConnection.setDriver("com.mysql.jdbc.Driver");
         MySql mySql = new MySql();
