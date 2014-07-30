@@ -21,10 +21,6 @@ public class MsSqlQuery implements Query {
         this.sql = sql;
         this.query = query;
         try {
-            if(this.sql.getSqlConnection().isClosed())
-                System.out.printf("Closed");
-            else
-                System.out.println("Opened");
             this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query);
         } catch (SQLException e) {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
