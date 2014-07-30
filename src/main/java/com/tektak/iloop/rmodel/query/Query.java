@@ -10,7 +10,7 @@ import java.sql.ResultSet;
  * Created by Dipak Malla
  * Date: 6/30/14
  */
-interface Query {
+public interface Query {
     public void InitPreparedStatement() throws RmodelException.SqlException, RmodelException.CommonException;
     public PreparedStatement getPreparedStatement();
     public void setPreparedStatement(PreparedStatement preparedStatement);
