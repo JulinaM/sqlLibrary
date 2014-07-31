@@ -85,7 +85,7 @@ public class MsSqlQuery implements Query {
 
     @Override
     public void setSql(Sql sql) {
-        this.sql = (MySql)sql;
+        this.sql = sql;
     }
 
     /**
