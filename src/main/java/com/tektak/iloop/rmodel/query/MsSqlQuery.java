@@ -39,7 +39,9 @@ public class MsSqlQuery implements Query {
         if(this.sql == null)
             throw new RmodelException.CommonException(String.format(RmodelException.FORMATED_NULL_ERROR,"MSSql Object"));
         try {
-            this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query);
+            this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
         } catch (SQLException e) {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }
@@ -85,7 +87,7 @@ public class MsSqlQuery implements Query {
 
     @Override
     public void setSql(Sql sql) {
-        this.sql = (MySql)sql;
+        this.sql = sql;
     }
 
     /**
