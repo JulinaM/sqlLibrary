@@ -4,6 +4,7 @@ import com.tektak.iloop.rmodel.RmodelException;
 import com.tektak.iloop.rmodel.driver.MySql;
 import com.tektak.iloop.rmodel.driver.Sql;
 
+import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,6 +58,16 @@ public class MySqlQuery implements Query {
     }
 
     @Override
+    public void InitPreparedStatement(int type) throws RmodelException.SqlException, RmodelException.CommonException {
+
+    }
+
+    @Override
+    public void InitCallableStatement() throws RmodelException.SqlException, RmodelException.CommonException {
+
+    }
+
+    @Override
     public PreparedStatement getPreparedStatement() {
         return this.preparedStatement;
     }
@@ -64,6 +75,16 @@ public class MySqlQuery implements Query {
     @Override
     public void setPreparedStatement(PreparedStatement preparedStatement) {
         this.preparedStatement = preparedStatement;
+    }
+
+    @Override
+    public CallableStatement getCallableStatement() {
+        return null;
+    }
+
+    @Override
+    public void setCallableStatement(CallableStatement callableStatement) {
+
     }
 
     /**
@@ -78,6 +99,11 @@ public class MySqlQuery implements Query {
         } catch (SQLException e) {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }
+    }
+
+    @Override
+    public int DmlWithGeneratedId() throws RmodelException.SqlException {
+        return 0;
     }
 
     /**
