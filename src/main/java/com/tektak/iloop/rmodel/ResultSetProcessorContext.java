@@ -10,13 +10,13 @@ import java.util.ArrayList;
  */
 public class ResultSetProcessorContext {
     public static <E> ArrayList<E> processResult(ResultSet resultSet, ResultSetProcessor resultSetProcessor, E model)
-            throws SQLException {
+            throws RmodelException.CommonException, SQLException {
         resultSet.last();
         int size = resultSet.getRow();
         resultSet.beforeFirst();
         ArrayList<E> modelList = new ArrayList<>(size);
         while (resultSet.next()) {
-            modelList.add(resultSetProcessor.process(resultSet, model));
+            modelList.add(resultSetProcessor.process(resultSet,model));
         }
         return modelList;
     }
