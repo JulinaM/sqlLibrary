@@ -55,8 +55,6 @@ public class MsSqlQuery implements Query {
             throw new RmodelException.CommonException(String.format(RmodelException.FORMATED_NULL_ERROR,"MSSql Object"));
         try {
             this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query, type);
-
-
         } catch (SQLException e) {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }
