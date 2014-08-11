@@ -63,7 +63,9 @@ public class MySql implements Sql {
      * @return Sql Connection
      */
     @Override
-    public java.sql.Connection getSqlConnection() {
+    public java.sql.Connection getSqlConnection() throws RmodelException.SqlException {
+        if(this.sqlConnection == null)
+            throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION);
         return this.sqlConnection;
     }
 }

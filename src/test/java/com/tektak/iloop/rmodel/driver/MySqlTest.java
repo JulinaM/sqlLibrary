@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class MySqlTest {
     @Test
-    public void TestConnection() {
+    public void TestConnection() throws RmodelException.SqlException {
         MySqlConnection mySqlConnection = new MySqlConnection();
         mySqlConnection.setDatabaseName("ram");
         mySqlConnection.setUsername("root");

@@ -11,7 +11,7 @@ import org.junit.Test;
  */
 public class MsSqlTest {
     @Test
-    public void TestConnection() {
+    public void TestConnection() throws RmodelException.SqlException {
         MySqlConnection mySqlConnection = new MySqlConnection();
         mySqlConnection.setDatabaseName("iLoopV1_0");
         mySqlConnection.setUsername("sa");

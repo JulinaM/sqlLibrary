@@ -1,7 +1,7 @@
 package com.tektak.iloop.rmodel.driver;
 
 import com.tektak.iloop.rmodel.RmodelException;
-
+import org.apache.tomcat.jdbc.pool.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,6 +13,7 @@ import java.sql.SQLException;
 public class MsSql implements Sql {
     private java.sql.Connection sqlConnection;
     private com.tektak.iloop.rmodel.connection.Connection connection;
+    private DataSource dataSource;
     @Override
     public Connection InitConnection() throws RmodelException.CommonException, RmodelException.SqlException {
         if(this.connection ==  null)
@@ -46,7 +47,11 @@ public class MsSql implements Sql {
             }
     }
     @Override
-    public Connection getSqlConnection() {
+    public Connection getSqlConnection() throws RmodelException.SqlException {
+        if(this.sqlConnection == null)
+            throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION);
         return this.sqlConnection;
     }
+
+
 }
