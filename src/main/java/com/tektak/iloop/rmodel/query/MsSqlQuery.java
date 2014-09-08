@@ -15,6 +15,7 @@ public class MsSqlQuery implements Query {
     private CallableStatement callableStatement;
     private Sql sql;
     private String query;
+    private Connection connection;
     public MsSqlQuery(){}
     public MsSqlQuery(Sql sql, String query) throws RmodelException.SqlException {
         this.sql = sql;
@@ -38,7 +39,8 @@ public class MsSqlQuery implements Query {
         if(this.sql == null)
             throw new RmodelException.CommonException(String.format(RmodelException.FORMATED_NULL_ERROR,"MSSql Object"));
         try {
-            this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+            this.connection = this.sql.getSqlConnection();
+            this.preparedStatement = this.connection.prepareStatement(this.query, ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
 
@@ -54,7 +56,8 @@ public class MsSqlQuery implements Query {
         if(this.sql == null)
             throw new RmodelException.CommonException(String.format(RmodelException.FORMATED_NULL_ERROR,"MSSql Object"));
         try {
-            this.preparedStatement = this.sql.getSqlConnection().prepareStatement(this.query, type);
+            this.connection = this.sql.getSqlConnection();
+            this.preparedStatement = this.connection.prepareStatement(this.query, type);
         } catch (SQLException e) {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }
@@ -67,7 +70,8 @@ public class MsSqlQuery implements Query {
         if(this.sql == null)
             throw new RmodelException.CommonException(String.format(RmodelException.FORMATED_NULL_ERROR,"MSSql Object"));
         try {
-            this.callableStatement = this.sql.getSqlConnection().prepareCall(this.query, ResultSet.TYPE_SCROLL_INSENSITIVE,
+            this.connection = this.sql.getSqlConnection();
+            this.callableStatement = this.connection.prepareCall(this.query, ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
         } catch (SQLException e) {
@@ -143,7 +147,10 @@ public class MsSqlQuery implements Query {
      */
     @Override
     public void Close() throws RmodelException.SqlException {
-        this.sql.CloseConnection();
+        if(this.connection != null)
+            try {
+                this.connection.close();
+            } catch (SQLException e) {}
     }
 
     @Override

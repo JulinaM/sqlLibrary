@@ -37,8 +37,11 @@ public class MsSqlPool implements Sql  {
         poolProperties.setMinIdle(10);
         poolProperties.setLogAbandoned(true);
         poolProperties.setRemoveAbandoned(true);
+        poolProperties.setAbandonWhenPercentageFull(50);
         poolProperties.setJdbcInterceptors("org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;"+
-                "org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer");
+                "org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer;"+
+                        "org.apache.tomcat.jdbc.pool.interceptor.ResetAbandonedTimer"
+        );
         dataSource = new DataSource();
         dataSource.setPoolProperties(poolProperties);
         try {
