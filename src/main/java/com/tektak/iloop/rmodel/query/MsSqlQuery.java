@@ -73,7 +73,6 @@ public class MsSqlQuery implements Query {
             this.connection = this.sql.getSqlConnection();
             this.callableStatement = this.connection.prepareCall(this.query, ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-
         } catch (SQLException e) {
             throw new RmodelException.SqlException(RmodelException.SQL_EXCEPTION,e);
         }

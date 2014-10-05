@@ -9,7 +9,8 @@ import java.util.ArrayList;
  * Date: 8/7/14
  */
 public class ResultSetProcessorContext {
-    public static <E> ArrayList<E> processResult(ResultSet resultSet, ResultSetProcessor resultSetProcessor, E model)
+    public static <E> ArrayList<E> processResult(ResultSet resultSet
+            , ResultSetProcessor resultSetProcessor, E model)
             throws RmodelException.CommonException, SQLException {
         resultSet.last();
         int size = resultSet.getRow();
